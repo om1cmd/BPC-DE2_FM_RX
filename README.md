@@ -14,7 +14,8 @@ Project for digital electronics course BPC-DE2 on BUT FEEC.
 - rotary encoder
 
 ## Block diagram  
-![Block diagram - subject to change](visualization&graphics/block_diagram.png)
+![Block diagram](visualization&graphics/block_diagram.png)
+*Block diagram - may be subject to change*
 
 ## Readme - required content (TO DO list)
 - Problem statement and summary of the solution.
