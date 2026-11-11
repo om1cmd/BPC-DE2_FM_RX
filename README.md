@@ -17,7 +17,7 @@ Project for digital electronics course BPC-DE2 on BUT FEEC.
 ![Block diagram](visualization&graphics/block_diagram.png)
 *Block diagram - may be subject to change*
 
-## Readme - required content (TO DO list)
+## Readme - required contents (TO DO list)
 - Problem statement and summary of the solution.
 - Setup and operating instructions, including required MicroPython modules.
 - Hardware inventory and any assumptions or limitations.
