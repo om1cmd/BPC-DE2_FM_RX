@@ -4,10 +4,10 @@ from machine import I2C, Pin
 
 
 def main():
-    i2c = I2C(0, sda=Pin(4), scl=Pin(5), freq=100_000)
-    # radio = Radio(i2c, Pin(2))
-    # radio.Init()
-    print(i2c.scan())
+    # i2c = I2C(0, sda=Pin(4), scl=Pin(5), freq=100_000)
+    radio = Radio(Pin(4, Pin.OUT), Pin(5, Pin.OUT), Pin(2, Pin.OUT))
+    radio.Init()
+    radio.printInfo()
 
 
 if __name__ == '__main__':

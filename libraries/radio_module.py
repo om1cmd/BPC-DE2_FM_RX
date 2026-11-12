@@ -1,4 +1,5 @@
 import time
+from machine import I2C
 
 class Radio:
     # 定义寄存器的名字
@@ -79,11 +80,13 @@ class Radio:
     SI4703_SEEK_DOWN =      0
     SI4703_SEEK_UP =        1
 
-    def __init__(this,i2c,rstPin):
-        this.i2c=i2c            # 允许i2c共享，但是si4703不支持超过400k的i2c时钟
+    def __init__(this,dataPin,clockPin,rstPin):
+        # this.i2c=i2c            # 允许i2c共享，但是si4703不支持超过400k的i2c时钟
         this.address=0x10
         this.resetPin=rstPin
 
+        this.sdaPin = dataPin
+        this.sclPin = clockPin
         this.registers = [0] * 16
         this.rds_ps = [0] * 8
         this.rds_rt = [0] * 64
@@ -132,9 +135,12 @@ class Radio:
 
         # 按照datasheet说明，将RST引脚置低，保持100ms以后，再置高。此时再在i2c上扫描，就能扫描到0x10设备。
         this.resetPin.off()
-        time.sleep_ms(100)
+        this.sdaPin.off()
+        time.sleep(1)
         this.resetPin.on()
 
+        this.i2c = I2C(0, sda=this.sdaPin, scl=this.sclPin, freq=100_000)
+        print(this.i2c.scan())
         # 在重启后，si4703开始工作前，其寄存器已经可以开始读写。
         this.ReadRegisters()
         # 根据datasheet在si4703开始工作前，需要对使用的晶振进行设定。
