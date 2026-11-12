@@ -19,13 +19,13 @@ The project's goal is to create a functional FM radio receiver tuned by rotary e
 
 ## Block diagram
 
-![Block diagram](visualization&graphics/block_diagram.png)
+![Block diagram](visualization-graphics/block_diagram_fixed.jpg)
 
 *Block diagram may be subject to change*
 
 ## Pinout schematic
 
-![Pinout schematic](visualization&graphics/pinout-schematic.png)
+![Pinout schematic](visualization-graphics/pinout-schematic.png)
 
 *Certain parts of pinout schematic such as GPIO connections may be subject to change*
 
@@ -43,7 +43,7 @@ Git creation, agree on project proposal; component list and pin plan; repository
 ## Git structure
 Currently proposed repository structure:
 
-![Git structure](visualization&graphics/git-structure.png)
+![Git structure](visualization-graphics/git-structure.png)
 
 *Git structure may be subject to change*
 
