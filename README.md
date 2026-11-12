@@ -1,6 +1,5 @@
 # BPC-DE2_FM_RX
-Project for digital electronics course BPC-DE2 on BUT FEEC, FM radio receiver with digital tuning.
-The project's goal is to create a functional FM radio receiver tuned by rotary encoder. Outputs consist of audio output routed to headphones and information shown on a OLED display.
+This is a project for digital electronics course BPC-DE2 on BUT FEEC, FM radio receiver with digital tuning. The project's goal is to create a functional FM radio receiver tuned by rotary encoder. Outputs consist of audio output routed to headphones and information shown on a OLED display.
 
 ## Team members:
 - Marek Mička
@@ -47,12 +46,20 @@ Currently proposed repository structure:
 
 *Git structure may be subject to change*
 
+## Module verification
+### FM Radio module with Si4703
+To control the FM module use a library found on github.
+
+[Link to original repository](https://github.com/bh1rio/micropython-si4703/tree/main?tab=BSD-3-Clause-1-ov-file)
+
+In order to correctly initialize out module, original code had to be modified. Instead of passing I2C object to the constructor of Radio class, we pass I2C SDA and SCL pins to it. Then during radio initialization SDA pin needs to be held low while reset pin is taken high, so that the module initializes in 2-wire I2C mode. After that I2C communication is initialized.
+
+#### Console output of module verification code
+![Console output](component-verification/radio_Si4703/console_output.png)
+
+
 ## Readme - required contents (TO DO list)
 - Problem statement and summary of the solution.
 - Setup and operating instructions, including required MicroPython modules.
 - Hardware inventory and any assumptions or limitations.
 - Links to the poster and demonstration video.
-
-
-
-
