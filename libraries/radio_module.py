@@ -140,7 +140,7 @@ class Radio:
         this.resetPin.on()
 
         this.i2c = I2C(0, sda=this.sdaPin, scl=this.sclPin, freq=100_000)
-        print(this.i2c.scan())
+
         # 在重启后，si4703开始工作前，其寄存器已经可以开始读写。
         this.ReadRegisters()
         # 根据datasheet在si4703开始工作前，需要对使用的晶振进行设定。

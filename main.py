@@ -8,6 +8,7 @@ def main():
     radio = Radio(Pin(4, Pin.OUT), Pin(5, Pin.OUT), Pin(2, Pin.OUT))
     radio.Init()
     radio.printInfo()
+    radio.ShutDown()
 
 
 if __name__ == '__main__':
