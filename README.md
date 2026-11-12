@@ -6,7 +6,7 @@ The project's goal is to create a functional FM radio receiver tuned by rotary e
 - Marek Mička
 - Šimon Tokarčík
 - Pavel Trojan
-- Alexandr Stoljar 
+- Alexandr Stoljar
 
 ## Component list:
 
@@ -17,7 +17,7 @@ The project's goal is to create a functional FM radio receiver tuned by rotary e
 | I2C OLED display | SSD1306 |
 | Rotary encoder | Rotary encoder |
 
-## Block diagram  
+## Block diagram
 
 ![Block diagram](visualization&graphics/block_diagram.png)
 
