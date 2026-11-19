@@ -16,17 +16,17 @@ This is a project for digital electronics course BPC-DE2 on BUT FEEC, FM radio r
 | I2C OLED display | SSD1306 |
 | Rotary encoder | Rotary encoder |
 
-## Block diagram
-
-![Block diagram](visualization-graphics/block_diagram_fixed.jpg)
-
-*Block diagram may be subject to change*
-
 ## Pinout schematic
 
 ![Pinout schematic](visualization-graphics/pinout-schematic.png)
 
 *Certain parts of pinout schematic such as GPIO connections may be subject to change*
+
+## Block diagram
+
+![Block diagram](visualization-graphics/block_diagram_fixed.jpg)
+
+*Block diagram may be subject to change*
 
 ## Progression and responsibilities
 ### Week 1
@@ -39,12 +39,30 @@ Git creation, agree on project proposal; component list and pin plan; repository
 | Pavel Trojan | Block diagram creation, component research |
 | Alexandr Stoljar | Git maintenance, component research |
 
+### Week 2
+Component verification, git updates
+
+| Person | Responsibility |
+| ------ | -------------- |
+| Marek Mička | Setting up FM module |
+| Šimon Tokarčík | Setting up FM module |
+| Pavel Trojan | OLED display module verification |
+| Alexandr Stoljar | Rotary encoder module verification |
+
 ## Git structure
 Currently proposed repository structure:
 
 ![Git structure](visualization-graphics/git-structure.png)
 
 *Git structure may be subject to change*
+
+## Timing and Concurrency Plan
+
+| Component | Response / Interval |
+| ------ | -------------- |
+| Rotary Encoder | Interrupt at event |
+| FM Module | Response to event of Rotary Encoder |
+| OLED Display | Update once per 50 ms |
 
 ## Module verification
 ### FM Radio module with Si4703
