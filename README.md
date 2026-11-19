@@ -83,7 +83,7 @@ Rotary encoder is controlled by libraries found on Github by Mike Teachman. File
 
 ![Encoder](component-verification/rotary-encoder/encoder_test.png)
 
-*For clockwise turning - the encoder counts upwards, for counter-clockwise turning the encoder countrs downwards*
+*For clockwise turning - the encoder counts upwards, for counter-clockwise turning the encoder counts downwards*
 
 ## Readme - required contents (TO DO list)
 - Problem statement and summary of the solution.
