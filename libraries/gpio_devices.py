@@ -1,7 +1,7 @@
 """
-This module provides classes to manage common input/output components, 
-such as buttons and LEDs, with support for PWM-based brightness control 
-for LEDs. The classes allow for checking button states, toggling LEDs, 
+This module provides classes to manage common input/output components,
+such as buttons and LEDs, with support for PWM-based brightness control
+for LEDs. The classes allow for checking button states, toggling LEDs,
 blinking LEDs, and controlling brightness and fading effects using PWM.
 
 Example
@@ -44,7 +44,7 @@ import time
 
 class Button(Pin):
     """
-    A class to manage a button connected to a GPIO pin with an 
+    A class to manage a button connected to a GPIO pin with an
     internal pull-up resistor.
     """
 
@@ -74,7 +74,7 @@ class Button(Pin):
         :return: ``True`` if the button is released; ``False`` otherwise.
         """
         return self.pin.value() == 1
-    
+
     def button_state(self):
         """
         Read the current button state.
@@ -255,7 +255,7 @@ class PWMLed(PWM):
         super().__init__(pin)
         self.freq(frequency)
         self.duty_u16(0)
-    
+
     def set_brightness(self, brightness):
         """
         Set the LED brightness using PWM.
