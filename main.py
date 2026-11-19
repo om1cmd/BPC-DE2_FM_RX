@@ -15,13 +15,14 @@ def main():
     radio = Radio(Pin(4, Pin.OUT), Pin(5, Pin.OUT), Pin(22, Pin.OUT))
     radio.Init()
 
-    minimum_frequency = 87   # minumum tunable frequency in MHz
-    maximum_frequency = 108  # maximum tunable frequency in MHz
+    # set according to your country bandplan
+    minimum_frequency = 87.5   # minumum tunable frequency in MHz (lowest supported value is 76)
+    maximum_frequency = 108  # maximum tunable frequency in MHz (highest supported value is 108)
 
     encoder = RotaryIRQ(pin_num_clk=12,
                         pin_num_dt=3,
-                        min_val=minimum_frequency*10,
-                        max_val=maximum_frequency*10,
+                        min_val=int(minimum_frequency*10),
+                        max_val=int(maximum_frequency*10),
                         reverse=False,
                         half_step=True,
                         range_mode=RotaryIRQ.RANGE_WRAP)
@@ -35,6 +36,7 @@ def main():
                 frequency = encoder.value()
                 radio.SetChannel(frequency)
                 encoder_changed_value = False
+                print(frequency)
             time.sleep_ms(100)
 
     except KeyboardInterrupt:
