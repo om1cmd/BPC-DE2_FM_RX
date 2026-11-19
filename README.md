@@ -88,7 +88,7 @@ Turning of the rotary encoder was successfully tested using libraries [rotary.py
 ![Console output_encoder](component-verification/rotary-encoder/encoder_test.png)
 
 #### Output of logic analyzer
-*The signals from DT and CLK output pins have a phase delay that depends on the direction the encoder is turned*
+*The signals from DT and CLK output pins have a phase delay that depends on the direction the encoder is turned. Channel 00 is CLK signal, 01 is DT signal and 02 switch.*
 ![Logic_analyzer](component-verification/rotary-encoder/encoder_analyzer_output3.png)
 
 ### OLED Display
