@@ -72,6 +72,9 @@ To control the FM module use a library found on github.
 
 In order to correctly initialize out module, original code had to be modified. Instead of passing I2C object to the constructor of Radio class, we pass I2C SDA and SCL pins to it. Then during radio initialization SDA pin needs to be held low while reset pin is taken high, so that the module initializes in 2-wire I2C mode. After that I2C communication is initialized.
 
+#### Console output of module verification code
+![Console output](component-verification/radio_Si4703/console_output.png)
+
 ### Rotary encoder 
 Rotary encoder is controlled by libraries found on Github by Mike Teachman. Files are copied in this repository in libraries folder. Verification was done by encoder_test.py uploaded in "component-verification" folder. 
 
@@ -80,10 +83,6 @@ Rotary encoder is controlled by libraries found on Github by Mike Teachman. File
 
 ![Encoder](component-verification/rotary-encoder/encoder_test.png)
 *For clockwise turning - the encoder counts upwards, for counter-clockwise turning the encoder countrs downwards*
-
-#### Console output of module verification code
-![Console output](component-verification/radio_Si4703/console_output.png)
-
 
 ## Readme - required contents (TO DO list)
 - Problem statement and summary of the solution.
