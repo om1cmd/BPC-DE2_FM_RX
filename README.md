@@ -11,9 +11,9 @@ This is a project for digital electronics course BPC-DE2 on BUT FEEC, FM radio r
 
 | Component | Model |
 | ------ | -------------- |
-| Microcontroller | Raspberry Pi Pico W |
-| I2C FM radio tuner | Si4073 |
-| I2C OLED display | SSD1306 |
+| Microcontroller | [Raspberry Pi Pico W](https://pip-assets.raspberrypi.com/categories/686-raspberry-pi-pico-w/documents/RP-008312-DS-2-pico-w-datasheet.pdf) |
+| I2C FM radio tuner | [Si4073](https://components101.com/sites/default/files/component_datasheet/Si4703-FM-Radio-Tuner-Datasheet.pdf) |
+| I2C OLED display | [SSD1306](https://cdn-shop.adafruit.com/datasheets/SSD1306.pdf) |
 | Rotary encoder | Rotary encoder |
 
 ## Pinout schematic
@@ -72,18 +72,23 @@ To control the FM module use a library found on github.
 
 In order to correctly initialize out module, original code had to be modified. Instead of passing I2C object to the constructor of Radio class, we pass I2C SDA and SCL pins to it. Then during radio initialization SDA pin needs to be held low while reset pin is taken high, so that the module initializes in 2-wire I2C mode. After that I2C communication is initialized.
 
-### Rotary encoder 
-Rotary encoder is controlled by libraries found on Github by Mike Teachman. Files are copied in this repository in libraries folder. Verification was done by encoder_test.py uploaded in "component-verification" folder. 
+#### Console output of FM module verification code
+![Console output_fm](component-verification/radio_Si4703/console_output.png)
 
-![Rotary encoder analyzer](component-verification/rotary-encoder/encoder_analyzer_output.png)
-*The signals from DT and CLK output pins have a phase delay that depends on the direction the encoder is turned*
+### Rotary Encoder
+Turning of the rotary encoder was successfully tested using libraries [rotary.py](libraries/rotary.py) and [rotary_irq_rp2.py](libraries/rotary_irq_rp2.py) along with temporary [verification code](component-verification/rotary-encoder/main.py).
 
-![Encoder](component-verification/rotary-encoder/encoder_test.png)
-*For clockwise turning - the encoder counts upwards, for counter-clockwise turning the encoder countrs downwards*
+#### Console output of encoder verification code
+![Console output_encoder](component-verification/rotary-encoder/encoder_test.png)
 
-#### Console output of module verification code
-![Console output](component-verification/radio_Si4703/console_output.png)
+#### Output of logic analyzer
+![Logic_analyzer](component-verification/rotary-encoder/encoder_analyzer_output.png)
 
+### OLED Display
+OLED display was verified using [modified code](component-verification/oled-display/oled.py) originally from [BPC-DE2 course](https://gitlab.fekt.vut.cz/fryza/micropython-course-labs).
+
+#### Picture of verified OLED display
+![Picture of OLED](component-verification/oled-display/oled_proof.jpg)
 
 ## Readme - required contents (TO DO list)
 - Problem statement and summary of the solution.
