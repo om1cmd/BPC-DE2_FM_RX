@@ -15,7 +15,17 @@ def main():
     radio = Radio(Pin(4, Pin.OUT), Pin(5, Pin.OUT), Pin(22, Pin.OUT))
     radio.Init()
 
-    encoder = RotaryIRQ(pin_num_clk=12, pin_num_dt=3, min_val=870, max_val=1080, reverse=False, half_step=True, range_mode=RotaryIRQ.RANGE_WRAP)
+    minimum_frequency = 87   # minumum tunable frequency in MHz
+    maximum_frequency = 108  # maximum tunable frequency in MHz
+
+    encoder = RotaryIRQ(pin_num_clk=12,
+                        pin_num_dt=3,
+                        min_val=minimum_frequency*10,
+                        max_val=maximum_frequency*10,
+                        reverse=False,
+                        half_step=True,
+                        range_mode=RotaryIRQ.RANGE_WRAP)
+
     encoder.add_listener(encoder_handler)
 
     try:
