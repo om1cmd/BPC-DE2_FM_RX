@@ -14,7 +14,7 @@ This is a project for digital electronics course BPC-DE2 on BUT FEEC, FM radio r
 | Microcontroller | [Raspberry Pi Pico W](https://pip-assets.raspberrypi.com/categories/686-raspberry-pi-pico-w/documents/RP-008312-DS-2-pico-w-datasheet.pdf) |
 | I2C FM radio tuner | [Si4073](https://components101.com/sites/default/files/component_datasheet/Si4703-FM-Radio-Tuner-Datasheet.pdf) |
 | I2C OLED display | [SSD1306](https://cdn-shop.adafruit.com/datasheets/SSD1306.pdf) |
-| Rotary encoder | Rotary encoder |
+| Rotary encoder | KY-040 |
 
 ## Pinout schematic
 
