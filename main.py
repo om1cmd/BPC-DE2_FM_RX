@@ -12,7 +12,9 @@ def encoder_handler():
 
 
 def main():
-    radio = Radio(Pin(4, Pin.OUT), Pin(5, Pin.OUT), Pin(22, Pin.OUT))
+    # radio = Radio(Pin(4, Pin.OUT), Pin(5, Pin.OUT), Pin(22, Pin.OUT))
+    i2c = I2C(0, sda=Pin(4), scl=Pin(5), freq=100_000)
+    radio = Radio(i2c, Pin(22, Pin.OUT))
     radio.Init()
 
     # set according to your country bandplan
