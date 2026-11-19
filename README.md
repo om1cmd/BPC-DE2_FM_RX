@@ -76,12 +76,17 @@ In order to correctly initialize out module, original code had to be modified. I
 ![Console output_fm](component-verification/radio_Si4703/console_output.png)
 
 ### Rotary Encoder
-Turning of the rotary encoder was successfully tested using libraries [rotary.py](libraries/rotary.py) and [rotary_irq_rp2.py](libraries/rotary_irq_rp2.py) along with temporary [verification code](component-verification/rotary-encoder/encoder_test.py).
+Rotary encoder is controlled by libraries found on Github by Mike Teachman.
+
+[Link to original repository](https://github.com/miketeachman/micropython-rotary/tree/master)
+
+Turning of the rotary encoder was successfully tested using libraries [rotary.py](libraries/rotary.py) and [rotary_irq_rp2.py](libraries/rotary_irq_rp2.py) along with temporary [verification code](component-verification/rotary-encoder/encoder_test.py). For clockwise turning - the encoder counts upwards, for counter-clockwise turning the encoder counts downwards.
 
 #### Console output of encoder verification code
 ![Console output_encoder](component-verification/rotary-encoder/encoder_test.png)
 
 #### Output of logic analyzer
+*The signals from DT and CLK output pins have a phase delay that depends on the direction the encoder is turned*
 ![Logic_analyzer](component-verification/rotary-encoder/encoder_analyzer_output.png)
 
 ### OLED Display
