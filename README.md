@@ -82,12 +82,14 @@ Rotary encoder is controlled by libraries found on Github by Mike Teachman.
 
 Turning of the rotary encoder was successfully tested using libraries [rotary.py](libraries/rotary.py) and [rotary_irq_rp2.py](libraries/rotary_irq_rp2.py) along with temporary [verification code](component-verification/rotary-encoder/encoder_test.py). For clockwise turning - the encoder counts upwards, for counter-clockwise turning the encoder counts downwards.
 
+*During testing of the encoder an important constraint has been discovered. Funcitonality changes depending on the specific rotary encoder used. Majority of a sample of tested encoder incremets value after every second turn. The issue is that some of them to every turn. This can be solved by setting half_step parameter of RotaryIRQ to True/False depending on the specific encoder used.*
+
 #### Console output of encoder verification code
 ![Console output_encoder](component-verification/rotary-encoder/encoder_test.png)
 
 #### Output of logic analyzer
 *The signals from DT and CLK output pins have a phase delay that depends on the direction the encoder is turned*
-![Logic_analyzer](component-verification/rotary-encoder/encoder_analyzer_output.png)
+![Logic_analyzer](component-verification/rotary-encoder/encoder_analyzer_output3.png)
 
 ### OLED Display
 OLED display was verified using [modified code](component-verification/oled-display/oled.py) originally from [BPC-DE2 course](https://gitlab.fekt.vut.cz/fryza/micropython-course-labs).
