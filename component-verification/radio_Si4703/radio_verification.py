@@ -9,7 +9,7 @@ def main():
         channel_str = f'Channel: {channel*0.1} MHz'
         print(channel_str)
 
-    radio = Radio(Pin(4, Pin.OUT), Pin(5, Pin.OUT), Pin(2, Pin.OUT))
+    radio = Radio(Pin(4, Pin.OUT), Pin(5, Pin.OUT), Pin(22, Pin.OUT))
     radio.Init()
 
     print('Information about radio module:')
