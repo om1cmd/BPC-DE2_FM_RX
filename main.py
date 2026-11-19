@@ -6,7 +6,6 @@ import time
 
 encoder_changed_value = False
 
-
 def encoder_handler():
     global encoder_changed_value
     encoder_changed_value = True
@@ -21,11 +20,11 @@ def main():
 
     try:
         while True:
+            global encoder_changed_value
             if encoder_changed_value:
                 frequency = encoder.value()
                 radio.SetChannel(frequency)
                 encoder_changed_value = False
-                print(frequency)
             time.sleep_ms(100)
 
     except KeyboardInterrupt:
