@@ -79,11 +79,11 @@ def main():
 
     except KeyboardInterrupt:
         print('\nProgram stopped. Exiting...')
-        radio.ShutDown()
         oled.fill(0)
         oled.show()
         oled.poweroff()
         timer.deinit()
+        radio.ShutDown()
 
 
 if __name__ == '__main__':
