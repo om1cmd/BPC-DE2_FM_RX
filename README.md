@@ -59,7 +59,7 @@ Prototyppe creation, integration into main, git updates
 | Marek Mička | Setting up prototype, git updates, documentation |
 | Šimon Tokarčík | Setting up prototype, git updates, documentation |
 | Pavel Trojan | Adressing mistakes, git updates, documentation |
-| Alexandr Stoljar | git updates, documentation |
+| Alexandr Stoljar | Adressing mistakes, git updates, documentation |
 
 ## Git structure
 Currently proposed repository structure:
@@ -95,7 +95,7 @@ Rotary encoder is controlled by libraries found on Github by Mike Teachman.
 
 [Link to original repository](https://github.com/miketeachman/micropython-rotary/tree/master)
 
-Turning of the rotary encoder was successfully tested using libraries [rotary.py](libraries/rotary.py) and [rotary_irq_rp2.py](libraries/rotary_irq_rp2.py) along with temporary [verification code](component-verification/rotary-encoder/encoder_test.py). For clockwise turning - the encoder counts upwards, for counter-clockwise turning the encoder counts downwards.
+Turning of the rotary encoder was successfully tested using libraries [rotary.py](libraries/rotary_encoder/rotary.py) and [rotary_irq_rp2.py](libraries/rotary_encoder/rotary_irq_rp2.py) along with temporary [verification code](component-verification/rotary-encoder/encoder_test.py). For clockwise turning - the encoder counts upwards, for counter-clockwise turning the encoder counts downwards.
 
 *Note: During testing of the encoder an important constraint has been discovered. Funcitonality changes depending on the specific rotary encoder used. Majority of a sample of tested encoder incremets value after every second turn. The issue is that some of them to every turn. This can be solved by setting half_step parameter of RotaryIRQ to True/False depending on the specific encoder used.*
 
