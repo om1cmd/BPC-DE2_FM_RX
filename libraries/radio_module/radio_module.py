@@ -251,3 +251,7 @@ class Radio:
         this.ReadRegisters()
         this.registers[this.REG_POWERCFG] &= ~(1<<this.SI4703_SEEK) # 在搜索完成以后，清除搜索位。
         this.WriteRegisters()
+
+    def GetRSSI(this):
+        this.ReadRegisters()
+        return (this.registers[this.REG_STATUSRSSI] & 0x00FF)
