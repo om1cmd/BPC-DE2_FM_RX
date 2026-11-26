@@ -1,5 +1,7 @@
-# BPC-DE2_FM_RX
-This is a project for digital electronics course BPC-DE2 on BUT FEEC, FM radio receiver with digital tuning. The project's goal is to create a functional FM radio receiver tuned by rotary encoder. Outputs consist of audio output routed to headphones and information shown on a OLED display.
+﻿# BPC-DE2_FM_RX
+This is a project for digital electronics course BPC-DE2 on BUT FEEC, FM radio receiver with digital tuning. The project's goal is to create a functional FM radio receiver tuned by rotary encoder. Outputs consist of audio output routed to headphones and information such as frequency and RDS text shown on a OLED display.
+
+FM broadcasts can carry Radio Data System (RDS) data alongside the audio signal. This inaudible digital data can include station information and RadioText, such as the currently playing song or other short messages, which a compatible receiver can decode.
 
 ## Team members:
 - Marek Mička
@@ -9,22 +11,22 @@ This is a project for digital electronics course BPC-DE2 on BUT FEEC, FM radio r
 
 ## Component list:
 
-| Component | Model |
-| ------ | -------------- |
-| Microcontroller | [Raspberry Pi Pico W](https://pip-assets.raspberrypi.com/categories/686-raspberry-pi-pico-w/documents/RP-008312-DS-2-pico-w-datasheet.pdf) |
-| I2C FM radio tuner | [Si4073](https://components101.com/sites/default/files/component_datasheet/Si4703-FM-Radio-Tuner-Datasheet.pdf) |
-| I2C OLED display | [SSD1306](https://cdn-shop.adafruit.com/datasheets/SSD1306.pdf) |
-| Rotary encoder | KY-040 |
+| Component | Model | Purpose |
+| ------ | -------------- | ------- |
+| Microcontroller | [Raspberry Pi Pico W](https://pip-assets.raspberrypi.com/categories/686-raspberry-pi-pico-w/documents/RP-008312-DS-2-pico-w-datasheet.pdf) | Controls the receiver and coordinates its components. |
+| I2C FM radio tuner | [Si4703](https://components101.com/sites/default/files/component_datasheet/Si4703-FM-Radio-Tuner-Datasheet.pdf) | Receives FM stations and provides audio and RDS data. |
+| I2C OLED display | [SH1106](https://www.displayfuture.com/Display/datasheet/controller/SH1106.pdf) | Displays station and other receiver information. |
+| Rotary encoder | [KY-040](https://components101.com/sites/default/files/component_datasheet/KY-04-Rotary-Encoder-Datasheet.pdf) | Lets the user tune the radio. |
 
 ## Pinout schematic
 
-![Pinout schematic](visualization-graphics/pinout-schematic.png)
+![Pinout schematic](visualization-graphics/pinout_schematic.png)
 
 *Certain parts of pinout schematic such as GPIO connections may be subject to change*
 
 ## Block diagram
 
-![Block diagram](visualization-graphics/block_diagram_fixed.jpg)
+![Block diagram](visualization-graphics/block_diagram.png)
 
 *Block diagram may be subject to change*
 
@@ -49,6 +51,16 @@ Component verification, git updates
 | Pavel Trojan | OLED display module verification |
 | Alexandr Stoljar | Rotary encoder module verification |
 
+### Week 3
+Prototyppe creation, integration into main, git updates
+
+| Person | Responsibility |
+| ------ | -------------- |
+| Marek Mička | Setting up prototype, git updates, documentation |
+| Šimon Tokarčík | Setting up prototype, git updates, documentation |
+| Pavel Trojan | Adressing mistakes, git updates, documentation |
+| Alexandr Stoljar | git updates, documentation |
+
 ## Git structure
 Currently proposed repository structure:
 
@@ -62,15 +74,18 @@ Currently proposed repository structure:
 | ------ | -------------- |
 | Rotary Encoder | Interrupt at event |
 | FM Module | Response to event of Rotary Encoder |
-| OLED Display | Update once per 50 ms |
+| OLED Display | Forced update once per 100 ms |
+| OLED Display | Flag check for rotary encoder event every 10 ms |
 
 ## Module verification
 ### FM Radio module with Si4703
-To control the FM module use a library found on github.
+To control the FM module use a library found on github by Chi Zhang.
 
 [Link to original repository](https://github.com/bh1rio/micropython-si4703/tree/main?tab=BSD-3-Clause-1-ov-file)
 
 In order to correctly initialize out module, original code had to be modified. Instead of passing I2C object to the constructor of Radio class, we pass I2C SDA and SCL pins to it. Then during radio initialization SDA pin needs to be held low while reset pin is taken high, so that the module initializes in 2-wire I2C mode. After that I2C communication is initialized.
+
+*After further development, issues with the passing of I2C object were resolved and the code was restored to its original version.*
 
 #### Console output of FM module verification code
 ![Console output_fm](component-verification/radio_Si4703/console_output.png)
@@ -89,7 +104,8 @@ Turning of the rotary encoder was successfully tested using libraries [rotary.py
 
 #### Output of logic analyzer
 *The signals from DT and CLK output pins have a phase delay that depends on the direction the encoder is turned. Channel 00 is CLK signal, 01 is DT signal and 02 switch.*
-![Logic_analyzer](component-verification/rotary-encoder/encoder_analyzer_output3.png)
+![Logic_analyzer](component-verification/rotary-encoder/encoder_analyzer_output.png)
+![Logic_analyzer2](component-verification/rotary-encoder/encoder_analyzer_output2.png)
 
 ### OLED Display
 OLED display was verified using [modified code](component-verification/oled-display/oled.py) originally from [BPC-DE2 course](https://gitlab.fekt.vut.cz/fryza/micropython-course-labs).
@@ -97,8 +113,20 @@ OLED display was verified using [modified code](component-verification/oled-disp
 #### Picture of verified OLED display
 ![Picture of OLED](component-verification/oled-display/oled_proof.jpg)
 
-## Readme - required contents (TO DO list)
+## TO DO list - required contents
 - Problem statement and summary of the solution.
 - Setup and operating instructions, including required MicroPython modules.
 - Hardware inventory and any assumptions or limitations.
 - Links to the poster and demonstration video.
+
+## References
+- [Raspberry Pi Pico W datasheet](https://pip-assets.raspberrypi.com/categories/686-raspberry-pi-pico-w/documents/RP-008312-DS-2-pico-w-datasheet.pdf)
+- [Si4703 FM radio tuner datasheet](https://components101.com/sites/default/files/component_datasheet/Si4703-FM-Radio-Tuner-Datasheet.pdf)
+- [SH1106 datasheet](https://www.displayfuture.com/Display/datasheet/controller/SH1106.pdf)
+- [KY-040 datasheet](https://components101.com/sites/default/files/component_datasheet/KY-04-Rotary-Encoder-Datasheet.pdf)
+
+- [MicroPython Si4703 library by Chi Zhang](https://github.com/bh1rio/micropython-si4703/tree/main)
+- [MicroPython rotary encoder library by Mike Teachman](https://github.com/miketeachman/micropython-rotary/tree/master)
+- [MicroPython basic GPIO devices library by Tomáš Frýza](https://gitlab.fekt.vut.cz/fryza/micropython-course-labs/-/blob/main/examples/_modules/gpio_devices.py)
+
+
