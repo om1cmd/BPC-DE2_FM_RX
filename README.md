@@ -113,6 +113,13 @@ OLED display was verified using [modified code](component-verification/oled-disp
 #### Picture of verified OLED display
 ![Picture of OLED](component-verification/oled-display/oled_proof.jpg)
 
+## Poster and video link 
+![Picture of the poster](visualization-graphics/poster_demo.jpg)
+*Demo version of the poster*
+
+Link to the video: 
+....
+
 ## TO DO list - required contents
 - Problem statement and summary of the solution.
 - Setup and operating instructions, including required MicroPython modules.
