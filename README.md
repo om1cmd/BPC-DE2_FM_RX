@@ -97,7 +97,7 @@ Rotary encoder is controlled by libraries found on Github by Mike Teachman.
 
 Turning of the rotary encoder was successfully tested using libraries [rotary.py](libraries/rotary.py) and [rotary_irq_rp2.py](libraries/rotary_irq_rp2.py) along with temporary [verification code](component-verification/rotary-encoder/encoder_test.py). For clockwise turning - the encoder counts upwards, for counter-clockwise turning the encoder counts downwards.
 
-*During testing of the encoder an important constraint has been discovered. Funcitonality changes depending on the specific rotary encoder used. Majority of a sample of tested encoder incremets value after every second turn. The issue is that some of them to every turn. This can be solved by setting half_step parameter of RotaryIRQ to True/False depending on the specific encoder used.*
+*Note: During testing of the encoder an important constraint has been discovered. Funcitonality changes depending on the specific rotary encoder used. Majority of a sample of tested encoder incremets value after every second turn. The issue is that some of them to every turn. This can be solved by setting half_step parameter of RotaryIRQ to True/False depending on the specific encoder used.*
 
 #### Console output of encoder verification code
 ![Console output_encoder](component-verification/rotary-encoder/encoder_test.png)
