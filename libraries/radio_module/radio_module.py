@@ -150,11 +150,11 @@ class Radio:
 
         #this.registers[this.SI4703_SYSCONFIG1] |= (1<<this.SI4703_RDS) # 开启RDS，由于RDS部分尚未完成，暂未开启RDS部分
         this.registers[this.REG_SYSCONFIG1] |= (1<<this.SI4703_DE) # 国标加重为50kHz
+        this.registers[this.REG_SYSCONFIG1] |= (1<<this.SI4703_RDS) # enable RDS
         this.registers[this.REG_SYSCONFIG2] |= (1<<this.SI4703_SPACE0) # 国标频道间隔100KHz
         this.registers[this.REG_SYSCONFIG2] &= 0xFFF0 # 清除音量设置
         this.registers[this.REG_SYSCONFIG2] |= 0x0001 # 设置最小音量
         this.WriteRegisters() # 全部寄存器内容写回。
-        this.EnableRDS() # enable RDS after the fact
 
         time.sleep(.11) # 启动需要一段时间，根据datasheet等待0.11s
 
@@ -256,14 +256,6 @@ class Radio:
     def GetRSSI(this):
         this.ReadRegisters()
         return (this.registers[this.REG_STATUSRSSI] & 0x00FF)
-
-    def EnableRDS(this, enable=True):
-        this.ReadRegisters()
-        if enable:
-            this.registers[this.REG_SYSCONFIG1] |= (1<<this.SI4703_RDS)
-        else:
-            this.registers[this.REG_SYSCONFIG1] &= ~(1<<this.SI4703_RDS)
-        this.WriteRegisters()
 
     def GetRDS(this):
         this.ReadRegisters()
