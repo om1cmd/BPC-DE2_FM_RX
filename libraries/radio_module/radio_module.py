@@ -154,6 +154,7 @@ class Radio:
         this.registers[this.REG_SYSCONFIG2] &= 0xFFF0 # 清除音量设置
         this.registers[this.REG_SYSCONFIG2] |= 0x0001 # 设置最小音量
         this.WriteRegisters() # 全部寄存器内容写回。
+        this.EnableRDS() # enable RDS after the fact
 
         time.sleep(.11) # 启动需要一段时间，根据datasheet等待0.11s
 
@@ -255,3 +256,22 @@ class Radio:
     def GetRSSI(this):
         this.ReadRegisters()
         return (this.registers[this.REG_STATUSRSSI] & 0x00FF)
+
+    def EnableRDS(this, enable=True):
+        this.ReadRegisters()
+        if enable:
+            this.registers[this.REG_SYSCONFIG1] |= (1<<this.SI4703_RDS)
+        else:
+            this.registers[this.REG_SYSCONFIG1] &= ~(1<<this.SI4703_RDS)
+        this.WriteRegisters()
+
+    def GetRDS(this):
+        this.ReadRegisters()
+        this.WriteRegisters()
+
+        ps_index = this.registers[this.REG_RDSB] & this.SI4703_TYPE0_INDEX_MASK
+
+        rds_ps = [0] * 8
+        rds_ps[ps_index*2] = chr((this.registers[this.REG_RDSD] & 0xFF00) >> 8)
+        rds_ps[(ps_index*2)+1] = chr((this.registers[this.REG_RDSD] & 0x00FF))
+        print(rds_ps)

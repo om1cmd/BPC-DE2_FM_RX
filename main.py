@@ -43,7 +43,7 @@ def main():
     oled = SH1106_I2C(i2c)
 
     timer = Timer(-1)
-    timer.init(period=250,
+    timer.init(period=50,
                mode=Timer.PERIODIC,
                callback=timer_handler)
 
@@ -90,6 +90,7 @@ def main():
                 frequency = radio.GetChannel()
                 RSSI = radio.GetRSSI()
                 oled_draw(oled, frequency, RSSI)
+                radio.GetRDS()
 
                 screen_refresh_due = False
 
