@@ -114,7 +114,7 @@ OLED display was verified using [modified code](component-verification/oled-disp
 ![Picture of OLED](component-verification/oled-display/oled_proof.jpg)
 
 ## Poster and video link 
-![Picture of the poster](visualization-graphics/poster_demo.png)
+<img src="visualization-graphics/poster_demo.png" width="50%" alt="Picture of the poster">
 *Demo version of the poster*
 
 Link to the video: 
